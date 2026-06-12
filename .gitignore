@@ -1,1 +1,3 @@
-Nothing should be ignored based on the provided file changes. The modification of 'Source/EQChain.cpp' represents a source code file change, which does not warrant any new entries in the .gitignore file. The existing .gitignore content is also empty, so there are no existing rules to preserve or modify. Therefore, no .gitignore content needs to be generated.
+```cpp
+
+```
