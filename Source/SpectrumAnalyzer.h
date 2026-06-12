@@ -33,7 +33,7 @@ public:
     void setUpdateRateHz(int newRate);
 
     /** Lifecycle */
-    void prepare(double sampleRate, int samplesPerBlock);
+    void prepare(double sampleRate, int samplesPerBlock = 0);
     void releaseResources();
 
     /**
