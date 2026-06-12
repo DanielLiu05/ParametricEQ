@@ -39,16 +39,15 @@ void EQChain::process(const ProcessContext& context) noexcept
         else
         {
             // If bypassed and context is Non-Replacing, we must manually copy input to output
-            if constexpr (!context.isUsingSeparateInputAndOutputBuffers())
+            // Use SFINAE to detect if we're in a non-replacing context
+            if constexpr (requires { context.getInputBlock(); context.getOutputBlock(); })
             {
-                // Replacing context - no need to copy, input and output are the same
-            }
-            else
-            {
-                // Non-replacing context - copy input to output
                 auto&& inputBlock = context.getInputBlock();
                 auto&& outputBlock = context.getOutputBlock();
-                outputBlock.copyFrom(inputBlock);
+                if (&inputBlock != &outputBlock)
+                {
+                    outputBlock.copyFrom(inputBlock);
+                }
             }
         }
     }
