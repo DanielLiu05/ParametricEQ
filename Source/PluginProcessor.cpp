@@ -10,9 +10,6 @@ ParametricEQAudioProcessor::ParametricEQAudioProcessor()
         .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
     apvts(*this, nullptr, "Parameters", APVTSBuilder::createParameters())
 {
-    // Register as APVTS listener for parameter changes (message thread)
-    apvts.addParameterListener(this);
-
     // Initialize smoothed values and atomic targets with defaults
     for (int i = 0; i < numBands; ++i)
     {
@@ -38,7 +35,6 @@ ParametricEQAudioProcessor::ParametricEQAudioProcessor()
 
 ParametricEQAudioProcessor::~ParametricEQAudioProcessor()
 {
-    apvts.removeParameterListener(this);
 }
 
 //==============================================================================

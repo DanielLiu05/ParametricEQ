@@ -39,7 +39,7 @@ void EQChain::process(const ProcessContext& context) noexcept
         else
         {
             // If bypassed and context is Non-Replacing, we must manually copy input to output
-            if constexpr (!ProcessContext::isReplacing)
+            if constexpr (!ProcessContext::isReplacing())
             {
                 auto&& inputBlock = context.getInputBlock();
                 auto&& outputBlock = context.getOutputBlock();

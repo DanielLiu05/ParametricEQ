@@ -43,7 +43,7 @@ void SpectrumAnalyzer::setUpdateRateHz(int newRate)
         samplesBetweenFFT = static_cast<int>(currentSampleRate / updateRateHz);
 }
 
-void SpectrumAnalyzer::prepare(double sampleRate, int samplesPerBlock)
+void SpectrumAnalyzer::prepare(double sampleRate, int /*samplesPerBlock*/)
 {
     juce::ScopedLock sl(setupLock);
     currentSampleRate = sampleRate;
